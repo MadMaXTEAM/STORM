@@ -16,10 +16,19 @@ function vardump(value)
  print(serpent.block(value, {comment=false}))
 end
 local AutoSet = function()
-io.write("\27[31;47m\n◼¦ ارسل ايدي مطور الاساسي  SEND ID FOR SIDO \27[0;34;49m\n")  local SUDO = tonumber(io.read())   if not tostring(SUDO):match('%d+') then  local SUDO = 373906612 end
-io.write("\27[31;47m\n◼¦ ارسل معرف المطور بدون @ USERNAME FOR SUDO   \27[0;34;49m\n")  local user = io.read() 
-io.write("\27[31;47m\n◼¦ ارسل توكن البوت        TOKEN FOR YOU \27[0;34;49m\n")  local token = io.read()  botid = token:match("(%d+)")
-io.write("\27[31;47m\n◼¦ ارسل اسم للبوت          SEND NAME FOR YOU BOT \27[0;34;49m\n")  local name = io.read()  tahadevstorm:set(botid..'storm:name',name)
+io.write("\27[31;47m\n◼¦ ارسل ايدي مطور الاساسي  SEND ID FOR SIDO \27[0;34;49m\n")
+ local SUDO = tonumber(io.read())
+ if not tostring(SUDO):match('%d+') then
+  local SUDO = 373906612
+ end
+io.write("\27[31;47m\n◼¦ ارسل معرف المطور بدون @ USERNAME FOR SUDO   \27[0;34;49m\n")
+ local user = io.read() 
+io.write("\27[31;47m\n◼¦ ارسل توكن البوت        TOKEN FOR YOU \27[0;34;49m\n")
+ local token = io.read()
+ botid = token:match("(%d+)")
+io.write("\27[31;47m\n◼¦ ارسل اسم للبوت          SEND NAME FOR YOU BOT \27[0;34;49m\n")
+ local name = io.read()
+ liondevmadmax:set(botid..'storm:name',name)
 local create = function(data, file, uglify)
   file = io.open(file, "w+")
   local serialized
