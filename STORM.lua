@@ -273,21 +273,26 @@ function storm_get_title(gid) getChat(gid, savegp, nil)
 --------------------->>Get_Username<<-------
 function get_username1(user_id)
   if tahadevstorm:hget('username',user_id) then
-   text = '@'..(string.gsub(tahadevstorm:hget('username',user_id), 'false', '<code>'..user_id..'</code>')
+   text = '@'..(string.gsub(tahadevstorm:hget('username'
+                  ,user_id), 'false', '<code>'..user_id..'</code>')
     or 'لا يوجد')
   end
   get_user(user_id)
-  tahadevstorm:hdel('username',user_id)
+  tahadevstorm:hdel('username'
+         ,user_id)
   return text
  end
 -------------------->>Get_User<<-----------
 function storm_get_user(user_id)
-  if tahadevstorm:hget('username',user_id) then
-   text = '@'..(string.gsub(tahadevstorm:hget('username',user_id), 'false', '')
+  if tahadevstorm:hget('username'
+            ,user_id) then
+   text = '@'..(string.gsub(tahadevstorm:hget('username'
+                  ,user_id), 'false', '')
     or 'لا يوجد')
   end
   get_user(user_id)
-  tahadevstorm:hdel('username',user_id)
+  tahadevstorm:hdel('username'
+         ,user_id)
   return text
  end
 ---------------------->>Dl_Cb<<-------------
@@ -296,16 +301,30 @@ function dl_cb(dol, info)
 ------------------->>GetInputFile<<---------
  function getInputFile(file)
   if file:match('/') then
-   infile = {ID = "InputFileLocal", path_ = file}
+   infile = {ID = "InputFileLocal"
+            , path_ = file}
   elseif file:match('^%d+$') then
-   infile = {ID = "InputFileId", id_ = file}
-  else infile = {ID = "InputFilePersistentId", persistent_id_ = file}
+   infile = {ID = "InputFileId"
+            , id_ = file}
+  else infile = {ID = "InputFilePersistentId"
+            , persistent_id_ = file}
   end
   return infile
  end
 ------------------->>SendDocument<<----------
 function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, dl_cb, cmd)
-  tdcli_function ({ID = "SendMessage",chat_id_ = chat_id,reply_to_message_id_ = reply_to_message_id,disable_notification_ = disable_notification,from_background_ = from_background,reply_markup_ = reply_markup,input_message_content_ = {ID = "InputMessageDocument",document_ = getInputFile(document),caption_ = caption},}, dl_cb, cmd)
+  tdcli_function ({ID = "SendMessage"
+            ,chat_id_ = chat_id
+            ,reply_to_message_id_ = reply_to_message_id
+            ,disable_notification_ = disable_notification
+            ,from_background_ = from_background
+            ,reply_markup_ = reply_markup
+            ,input_message_content_ = {ID = "InputMessageDocument"
+               ,document_ = getInputFile(document)
+               ,caption_ = caption}
+            ,}
+         , dl_cb
+         , cmd)
  end
 --------------------->>GetChatId<<-----------
 function getChatId(id)
@@ -313,20 +332,32 @@ function getChatId(id)
   local id = tostring(id)
   if id:match('^-100') then
    local channel_id = id:gsub('-100', '')
-   chat = {ID = channel_id, type = 'channel'}
+   chat = {ID = channel_id
+            , type = 'channel'}
   else
    local group_id = id:gsub('-', '')
-   chat = {ID = group_id, type = 'group'}
+   chat = {ID = group_id
+            , type = 'group'}
   end
   return chat
  end
  -------------------->>GetChammlFull<<---------
 local function getChannelFull(channel_id,cb)
-  tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(channel_id).ID }, cb, nil)
+  tdcli_function ({ ID = "GetChannelFull"
+            , channel_id_ = getChatId(channel_id).ID }
+         , cb, nil)
  end
 ------------
-local function getChannelMembers(channel_id, offset, filter, limit,cb)
-  tdcli_function ({ ID = "GetChannelMembers",channel_id_ = getChatId(channel_id).ID,filter_ = {ID = "ChannelMembers" .. filter},offset_ = offset,limit_ = limit}, cb, nil)
+local function getChannelMembers(channel_id
+         , offset
+         , filter
+         , limit
+         ,cb)
+  tdcli_function ({ ID = "GetChannelMembers"
+            ,channel_id_ = getChatId(channel_id).ID
+            ,filter_ = {ID = "ChannelMembers" .. filter}
+            ,offset_ = offset,limit_ = limit}
+         , cb, nil)
  end
 --------------
 local function chek_bots(channel,cb)
@@ -335,7 +366,8 @@ local function chek_bots(channel,cb)
    getChannelMembers(channel, 0, 'Bots', limit,cb)
    storm_sendMsg(channel, 0, 1,'💢*¦* تم طرد البوتات \n', 1, 'md')
   end
-  getChannelFull(channel,callback_admins)
+  getChannelFull(channel
+         ,callback_admins)
  end
  ------------
 local function saddbyusername(username,cb)
@@ -354,7 +386,8 @@ function isnothtml(text) text = text:gsub("<code>", "")
 ----------------
 function rempv(user)
   local var = true
-  local url , res = HTTPS.request('https://api.telegram.org/bot'..chaneel..'/sendChatAction?chat_id='..user..'&action=Typing')
+  local url
+      , res = HTTPS.request('https://api.telegram.org/bot'..chaneel..'/sendChatAction?chat_id='..user..'&action=Typing')
   data = json:decode(url)
   if res ~= 200 then
    var = false
@@ -365,15 +398,74 @@ function rempv(user)
   end
  end
 -----------------
-function deleteChatPhoto(chat_id) https.request('https://api.telegram.org/bot'..chaneel..'/deleteChatPhoto?chat_id='..chat_id)
+function deleteChatPhoto(chat_id)
+      https.request('https://api.telegram.org/bot'..chaneel..'/deleteChatPhoto?chat_id='..chat_id)
  end
 ---------------
-function setChatDescription(chat_id, description) https.request('https://api.telegram.org/bot'..chaneel..'/setChatDescription?chat_id=' .. chat_id .. '&description=' ..(description))
+function setChatDescription(chat_id, description)
+      https.request('https://api.telegram.org/bot'..chaneel..'/setChatDescription?chat_id=' .. chat_id .. '&description=' ..(description))
  end
 ----------------
-local function sendRequest(request_id, chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, callback, extra) tdcli_function ({  ID = request_id,    chat_id_ = chat_id,    reply_to_message_id_ = reply_to_message_id,    disable_notification_ = disable_notification,    from_background_ = from_background,    reply_markup_ = reply_markup,    input_message_content_ = input_message_content,}, callback or dl_cb, extra) end
-local function sendVoice(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, voice, duration, waveform, caption, cb, cmd)  local input_message_content = {   ID = "InputMessageVoice",   voice_ = getInputFile(voice),  duration_ = duration or 0,   waveform_ = waveform,    caption_ = caption  }  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd) end
-local function sendSticker(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, sticker, cb, cmd)  local input_message_content = {    ID = "InputMessageSticker",   sticker_ = getInputFile(sticker),    width_ = 0,    height_ = 0  } sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd) end
+local function sendRequest(request_id, chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, callback, extra)
+      tdcli_function ({ID = request_id
+            , chat_id_ = chat_id
+            , reply_to_message_id_ = reply_to_message_id
+            , disable_notification_ = disable_notification
+            , from_background_ = from_background
+            , reply_markup_ = reply_markup
+            , input_message_content_ = input_message_content,}
+         , callback or dl_cb, extra)
+   end
+  -------------
+local function sendVoice(chat_id
+         , reply_to_message_id
+         , disable_notification
+         , from_background
+         , reply_markup
+         , voice
+         , duration
+         , waveform
+         , caption
+         , cb
+         , cmd)
+      local input_message_content = {ID = "InputMessageVoice"
+         , voice_ = getInputFile(voice)
+         , duration_ = duration or 0
+         , waveform_ = waveform
+         , caption_ = caption}
+      sendRequest('SendMessage'
+         , chat_id
+         , reply_to_message_id
+         , disable_notification
+         , from_background
+         , reply_markup
+         , input_message_content
+         , cb
+         , cmd)
+   end
+ -----------
+local function sendSticker(chat_id
+         , reply_to_message_id
+         , disable_notification
+         , from_background
+         , reply_markup
+         , sticker
+         , cb
+         , cmd)
+      local input_message_content = {ID = "InputMessageSticker"
+         , sticker_ = getInputFile(sticker)
+         , width_ = 0
+         , height_ = 0  }
+      sendRequest('SendMessage'
+         , chat_id
+         , reply_to_message_id
+         , disable_notification
+         , from_background
+         , reply_markup
+         , input_message_content
+         , cb
+         , cmd)
+   end
 local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, cb, cmd)  local input_message_content = {    ID = "InputMessageDocument",    document_ = getInputFile(document),    caption_ = caption  } sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd) end
 function s_api(web) local info, res = HTTPS.request(web) local req = json:decode(info) if res ~= 200 then return false end if not req.ok then return false end return req end 
 function exportChatInviteLink(chat_id) local send_api = 'https://api.telegram.org/bot'..chaneel..'/exportChatInviteLink?chat_id='.. chat_id  local linkx = s_api(send_api).result return linkx end
