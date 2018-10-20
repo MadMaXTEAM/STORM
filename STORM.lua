@@ -466,18 +466,157 @@ local function sendSticker(chat_id
          , cb
          , cmd)
    end
-local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, cb, cmd)  local input_message_content = {    ID = "InputMessageDocument",    document_ = getInputFile(document),    caption_ = caption  } sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd) end
-function s_api(web) local info, res = HTTPS.request(web) local req = json:decode(info) if res ~= 200 then return false end if not req.ok then return false end return req end 
-function exportChatInviteLink(chat_id) local send_api = 'https://api.telegram.org/bot'..chaneel..'/exportChatInviteLink?chat_id='.. chat_id  local linkx = s_api(send_api).result return linkx end
-function getChatMember(chat_id, user_id, cb) tdcli_function ({   ID = "GetChatMember", chat_id_ = chat_id, user_id_ = user_id }, cb or dl_cb, nil) end
-function get_name(id) local nu = tahadevstorm:hget('users:'..id, 'name')  if nu then local text = ""..(nu).."" return text else tdcli_function ({  ID = "GetUser",  user_id_ = id  }, saveuser, nil)  local text = ""..id..""  return text end end
-function get_username(id) local un = tahadevstorm:hget('users:'..id, 'uname')  if un then local text = ""..check_markdown(un).."" return text else local text = ""..(id).."" tdcli_function ({   ID = "GetUser",   user_id_ = id  }, saveuser, nil) return text end end
-function chek_admin(chat_id,set)  local function saddadmen_or_moder(extra,result,success)    limit = result.administrator_count_    if tonumber(limit) > 0 then    getChannelMembers(chat_id, 0, 'Administrators', limit,set)      end    end  getChannelFull(chat_id,saddadmen_or_moder) end
-local function saddmods_monshgtoup(channel_id, filter, offset, limit, cb, cmd)   if not limit or limit > 200 then    limit = 200  end tdcli_function ({  ID = "GetChannelMembers", channel_id_ = getChatId(channel_id).ID, filter_ = {   ID = "ChannelMembers" .. filter    },    offset_ = offset or 0,    limit_ = limit  }, cb or dl_cb, cmd) end
-function chek_moder(channel,cb)  local function callback_admins(extra,result,success)   limit = result.administrator_count_  if tonumber(limit) > 0 then    getChannelMembers(channel, 0, 'Administrators', limit,cb)     else return storm_sendMsg(channel, 0, 1,'', 1, 'md') end    end  getChannelFull(channel,callback_admins) end
-function stormset(chat_id, stormphoto) tdcli_function ({ ID = "ChangeChatPhoto",chat_id_ = chat_id,photo_ = getInputFile(stormphoto) }, dl_cb, nil) end
-local function getUserFull(user_id) tdcli_function ({ ID = "GetUserFull", user_id_ = user_id }, dl_cb, nil) end
-function storm_get_nae(user_id) if tahadevstorm:hget('name',user_id) then text = ''..(string.gsub(tahadevstorm:hget('name',user_id), 'false', '') or ' لا يوجد 🔥 ')  end  get_user(user_id) tahadevstorm:hdel('name',user_id) return text end
+local function sendDocument(chat_id, reply_to_message_id
+         , disable_notification
+         , from_background
+         , reply_markup
+         , document
+         , caption
+         , cb
+         , cmd)
+      local input_message_content = {ID = "InputMessageDocument"
+         , document_ = getInputFile(document)
+         , caption_ = caption}
+      sendRequest('SendMessage'
+         , chat_id, reply_to_message_id
+         , disable_notification
+         , from_background
+         , reply_markup
+         , input_message_content
+         , cb
+         , cmd)
+   end
+function s_api(web)
+      local info
+      , res = HTTPS.request(web)
+      local req = json:decode(info) 
+      if res ~= 200 then
+         return false
+      end
+      if not req.ok then
+         return false
+      end
+      return req
+   end 
+function exportChatInviteLink(chat_id)
+      local send_api = 'https://api.telegram.org/bot'..chaneel..'/exportChatInviteLink?chat_id='.. chat_id 
+      local linkx = s_api(send_api).result
+      return linkx
+   end
+function getChatMember(chat_id, user_id, cb)
+      tdcli_function ({ID = "GetChatMember", chat_id_ = chat_id
+            , user_id_ = user_id }
+         , cb
+         or
+         dl_cb
+         , nil)
+   end
+function get_name(id)
+      local nu = tahadevstorm:hget('users:'..id, 'name')
+      if nu then
+         local text = ""..(nu)..""
+         return text
+      else tdcli_function ({ID = "GetUser",  user_id_ = id  }
+            , saveuser
+            , nil)
+         local text = ""..id..""
+         return text
+      end
+   end
+function get_username(id)
+      local un = tahadevstorm:hget('users:'..id, 'uname')
+      if un then
+         local text = ""..check_markdown(un)..""
+         return text
+      else
+         local text = ""..(id).."" tdcli_function ({ID = "GetUser"
+               , user_id_ = id}
+            , saveuser
+            , nil)
+         return text
+      end
+   end
+function chek_admin(chat_id,set)
+      local 
+      function saddadmen_or_moder(extra,result,success)
+         limit = result.administrator_count_
+         if tonumber(limit) > 0 then
+            getChannelMembers(chat_id
+               , 0
+               , 'Administrators'
+               , limit
+               ,set)
+         end
+      end
+      getChannelFull(chat_id,saddadmen_or_moder)
+   end
+local function saddmods_monshgtoup(channel_id
+         , filter
+         , offset
+         , limit
+         , cb
+         , cmd)
+      if not limit
+         or
+         limit > 200 then
+         limit = 200
+      end tdcli_function ({ID = "GetChannelMembers"
+            , channel_id_ = getChatId(channel_id).ID
+            , filter_ = {ID = "ChannelMembers" .. filter}
+            , offset_ = offset
+            or 0
+            , limit_ = limit}
+         , cb
+         or dl_cb
+         , cmd)
+   end
+function chek_moder(channel,cb)
+      local function callback_admins(extra
+            ,result
+            ,success)
+         limit = result.administrator_count_
+         if tonumber(limit) > 0 then
+            getChannelMembers(channel
+               , 0
+               , 'Administrators'
+               , limit
+               ,cb)
+         else
+            return storm_sendMsg(channel
+               , 0
+               , 1
+               ,''
+               , 1
+               , 'md')
+         end
+      end
+      getChannelFull(channel,callback_admins)
+   end
+function stormset(chat_id
+         , stormphoto)
+      tdcli_function ({ID = "ChangeChatPhoto"
+            ,chat_id_ = chat_id,photo_ = getInputFile(stormphoto)}
+         , dl_cb
+         , nil)
+   end
+local function getUserFull(user_id) tdcli_function ({ ID = "GetUserFull"
+            , user_id_ = user_id}
+         , dl_cb
+         , nil)
+   end
+function storm_get_nae(user_id)
+      if tahadevstorm:hget('name'
+            ,user_id) then
+         text = ''..(string.gsub(tahadevstorm:hget('name'
+                  ,user_id)
+               , 'false'
+               , '')
+            or 'لا يوجد')
+      end
+      get_user(user_id)
+      tahadevstorm:hdel('name',user_id)
+      return text
+   end
 function string:split(sep)  local sep, fields = sep or ":", {}  local pattern = string.format("([^%s]+)", sep)  self:gsub(pattern, function(c) fields[#fields+1] = c end) return fields end
 function get_user(user_id) function dl_username(arg, data) username = data.username or ' ' name = data.first_name_ or ' لا يوجد 🔥 ' tahadevstorm:hset('username',data.id_,data.username_) tahadevstorm:hset('name',data.id_,data.first_name_) end  tdcli_function ({    ID = "GetUser",    user_id_ = user_id  }, dl_username, nil) end
 function deleteMessagesFromUser(chat_id, user_id) tdcli_function ({ ID = "DeleteMessagesFromUser", chat_id_ = chat_id, user_id_ = user_id }, dl_cb, nil) end
