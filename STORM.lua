@@ -15,7 +15,7 @@ HTTPS = require ("ssl.https")
 https = require ("ssl.https")
 http  = require ("socket.http")
 serpent = require("serpent")
-liondevmadmax = redis.connect('127.0.0.1', 6379)
+tahadevstorm = redis.connect('127.0.0.1', 6379)
 function vardump(value)  
  print(serpent.block(value, {comment=false}))
 end
