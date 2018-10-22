@@ -1122,10 +1122,62 @@ elseif
                   , taha
                   ,1
                   , 'md')  
-elseif text == 'قفل التاك' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:hash'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:hash'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:hash'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:hash'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــتاك \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
-elseif text == 'قفل الصوت' and msg.reply_to_message_id_ == 0 and is_mod(msg) then tahadevstorm:set(DEVSTOR..'lock:muse'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:muse'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:muse'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:muse'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــصوت \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
-elseif text == 'قفل الدردشه' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:text'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:text'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:text'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:text'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تــم قفـل الدردشه هنا *\n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
-elseif text == 'قفل الفيديو' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:ved'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:ved'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:ved'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:ved'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــفيديو \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
+elseif text == 'قفل التاك'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then 
+               tahadevstorm:set(DEVSTOR..'lock:hash'..msg.chat_id_,true) 
+               tahadevstorm:del(DEVSTOR..'lockked:hash'..msg.chat_id_,true) 
+               tahadevstorm:del(DEVSTOR..'lockkick:hash'..msg.chat_id_,true) 
+               tahadevstorm:del(DEVSTOR..'lockktm:hash'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــتاك \n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  , 1
+                  , 'md')  
+elseif text == 'قفل الصوت'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then
+               tahadevstorm:set(DEVSTOR..'lock:muse'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockked:muse'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockkick:muse'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockktm:muse'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــصوت \n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  ,1
+                  , 'md')  
+elseif text == 'قفل الدردشه'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then
+               tahadevstorm:set(DEVSTOR..'lock:text'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockked:text'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockkick:text'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockktm:text'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تــم قفـل الدردشه هنا *\n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  , 1
+                  , 'md')  
+elseif text == 'قفل الفيديو'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then
+               tahadevstorm:set(DEVSTOR..'lock:ved'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockked:ved'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockkick:ved'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockktm:ved'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــفيديو \n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  , 1
+                  , 'md')  
 elseif text == 'قفل المتحركه' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:gif'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:gif'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:gif'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:gif'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــمتحركه \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
 elseif text == 'قفل الملصقات' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:ste'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:ste'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:ste'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:ste'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــملصقات \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
 elseif text == 'قفل الالعاب' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:geam'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:geam'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:geam'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:geam'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الالـعاب \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
