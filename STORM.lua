@@ -16,14 +16,19 @@ https = require ("ssl.https")
 http  = require ("socket.http")
 serpent = require("serpent")
 tahadevstorm = redis.connect('127.0.0.1', 6379)
-function vardump(value)  
+function
+   vardump(value)  
  print(serpent.block(value, {comment=false}))
 end
-local AutoSet = function()
+local
+AutoSet = function()
 io.write("\27[31;47m\n◼¦ ارسل ايدي مطور الاساسي\27[0;34;49m\n")
- local SUDO = tonumber(io.read())
- if not tostring(SUDO):match('%d+') then
-  local SUDO = 373906612
+ local
+   SUDO = tonumber(io.read())
+ if not
+      tostring(SUDO):match('%d+') then
+  local
+      SUDO = 373906612
  end
 io.write("\27[31;47m\n🔜¦ ارسل معرف المطور بدون\27[0;34;49m\n")
  local user = io.read() 
@@ -32,7 +37,7 @@ io.write("\27[31;47m\n🔜¦ ارسل توكن البوت\27[0;34;49m\n")
  botid = token:match("(%d+)")
 io.write("\27[31;47m\n🔜¦ ارسل اسم للبوت\27[0;34;49m\n")
  local name = io.read()
- liondevmadmax:set(botid..'storm:name',name)
+ tahadevstorm:set(botid..'storm:name',name)
 local create = function(data, file, uglify)
   file = io.open(file, "w+")
   local serialized
@@ -62,14 +67,14 @@ end
 file = io.open("SM", "w")
  file:write([[
 killall screen
-screen ./install.sh
-echo -e "MADMAX IS RUN BOT"
+screen ./STORM.sh
+echo -e "STORM IS RUN BOT"
 ]])
  file:close()  
-file = io.open("install.sh", "w")
- file:write([[token="]]..token..[["./tg -s ./Madmax.lua $@ --bot=$token]]
+file = io.open("STORM.sh", "w")
+ file:write([[token="]]..token..[["./tg -s ./STORM.lua $@ --bot=$token]]
   file:close() os.execute('cd $home;ls -la;rm -fr .telegram-cli')
-  os.execute('screen ./install.sh')
+  os.execute('screen ./STORM.sh')
  end
  local serialize_to_file = function(data, file, uglify)
   file = io.open(file, "w+")
@@ -97,10 +102,10 @@ file = io.open("install.sh", "w")
  BOTS = sudos.bot_id
  bot_id = sudos.bot_id
  BOTS = sudos.bot_id
- DEVMADMAX = sudos.bot_id
+ DEVSTORM = sudos.bot_id
  botname = (sudos.botname
   or
-  liondevmadmax:get(DEVMADMAX..'storm:name'))
+  tahadevstorm:get(DEVSTORM..'storm:name'))
  sudouser = sudos.sudouser
  chaneel = sudos.token
  chdev = '@MADMAXTEAM'
@@ -617,7 +622,16 @@ function storm_get_nae(user_id)
       tahadevstorm:hdel('name',user_id)
       return text
    end
-function string:split(sep)  local sep, fields = sep or ":", {}  local pattern = string.format("([^%s]+)", sep)  self:gsub(pattern, function(c) fields[#fields+1] = c end) return fields end
+function string:split(sep)
+      local sep, fields = sep
+      or ":", {}
+      local pattern = string.format("([^%s]+)", sep)
+      self:gsub(pattern
+         , function(c)
+            fields[#fields+1] = c
+         end)
+      return fields
+   end
 function get_user(user_id) function dl_username(arg, data) username = data.username or ' ' name = data.first_name_ or ' لا يوجد 🔥 ' tahadevstorm:hset('username',data.id_,data.username_) tahadevstorm:hset('name',data.id_,data.first_name_) end  tdcli_function ({    ID = "GetUser",    user_id_ = user_id  }, dl_username, nil) end
 function deleteMessagesFromUser(chat_id, user_id) tdcli_function ({ ID = "DeleteMessagesFromUser", chat_id_ = chat_id, user_id_ = user_id }, dl_cb, nil) end
 function formsgg(msgs) local taha = ''  if msgs < 100 then taha = 'كلش ضعيف 😫' elseif msgs < 500 then taha = 'ضعيف 😨' elseif msgs < 1500 then taha = 'غير متفاعل 😒' elseif msgs < 5000 then taha = 'متوسط 😎' elseif msgs < 10000 then taha = 'متفاعل 😘' elseif msgs < 50000 then taha = 'قمة التفاعل 😍' elseif msgs < 90000 then taha = 'ملك التفاعل 😻'  elseif msgs < 100000 then taha = 'اسطورة التفاعل 🍃' elseif msgs < 1000000 then taha = 'متفاعل نار كلش 🔥' end return taha end
@@ -2038,7 +2052,13 @@ local text = [[
 📛*¦* ايدي المطور ◗`]]..msg.sender_user_id_..[[`◖
 💠*¦* معرف المطور ◗ []]..username..[[] ◖
 🔰*¦* اسم المطور ◗`]]..result.first_name_..[[`◖
-]] storm_sendMsg(SUDO, 0, 1,text, 1, 'md')    tahadevstorm:setex(DEVSTOR.."rem:bot:"..msg.chat_id_, 240, true) end end getUser(msg.sender_user_id_,check_can_send1) tahadevstorm:del(DEVSTOR.."test:group"..msg.chat_id_)   end  
+]] storm_sendMsg(SUDO, 0, 1,text, 1, 'md')
+                        tahadevstorm:setex(DEVSTOR.."rem:bot:"..msg.chat_id_, 240, true)
+                     end
+                  end
+                  getUser(msg.sender_user_id_,check_can_send1)
+                  tahadevstorm:del(DEVSTOR.."test:group"..msg.chat_id_)
+               end  
 if text and text:match("^زخرفه$")  then   tahadevstorm:setex(DEVSTOR.."skrafa:name" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 10000, true)   tahadevstorm:setex(DEVSTOR.."skrafa:namen" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 10000, true)  local t = '*⚡¦* ارسل الاسم الذي تريد زخرفته \n*📬¦* سواء كان بالعربي او بالانكلش 🍁'   storm_sendMsg(msg.chat_id_, msg.id_, 1,t, 1, 'md') end
 if text == 'صنع رابط' and is_mod(msg) then  tahadevstorm:del('cleanbotslimit:'..msg.chat_id_)   function taha (arg ,data)   exportChatInviteLink(msg.chat_id_)     if not data.invite_link_ == true then    storm_sendMsg(msg.chat_id_, msg.id_, 1, "*🚨¦* لا استطيع صنع رابط للمجموعه \n*📬¦* حاول بعد مره اخرى بعد 3 دقائق\n", 1, "md")   return false  end    storm_sendMsg(msg.chat_id_, msg.id_, 1,'💠*¦* تم صنع رابط للمجموعه\n🚨*¦* ستنتهي مدة الرابط بعد دقيقتين \nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n['..data.invite_link_..']', 1, 'md')    end    getChannelFull(msg.chat_id_, taha, {chat_id=msg.chat_id_,msg_id=msg.id})    end
 if text and text:match('^الرابط (-%d+)') and is_devtaha(msg) then    local ch = text:match('الرابط (-%d+)')   exportChatInviteLink(ch)   function taha (arg ,data)   if not data.invite_link_ == true then    storm_sendMsg(msg.chat_id_, msg.id_, 1, "*🚨¦* لا استطيع صنع رابط للمجموعه \n*📬¦* حاول بعد مره اخرى بعد 3 دقائق\n", 1, "md")    return false  end    storm_sendMsg(msg.chat_id_, msg.id_, 1,'💠*¦* تم صنع رابط للمجموعه\n🚨*¦* ستنتهي مدة الرابط بعد دقيقتين \nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n['..data.invite_link_..']', 1, 'md')    end    getChannelFull(ch, taha, {chat_id=ch,msg_id=msg.id})    end if text and text:match('(.*)') then  taha = tahadevstorm:smembers(DEVSTOR..'botgps') for k,v in pairs(taha) do tahadevstorm:sadd(DEVSTOR..'bot:gpsby:id',v)   tahadevstorm:sadd(DEVSTOR.."botgps",v)   end end
