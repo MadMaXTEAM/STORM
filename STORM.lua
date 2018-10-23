@@ -632,7 +632,20 @@ function string:split(sep)
          end)
       return fields
    end
-function get_user(user_id) function dl_username(arg, data) username = data.username or ' ' name = data.first_name_ or ' لا يوجد 🔥 ' tahadevstorm:hset('username',data.id_,data.username_) tahadevstorm:hset('name',data.id_,data.first_name_) end  tdcli_function ({    ID = "GetUser",    user_id_ = user_id  }, dl_username, nil) end
+function get_user(user_id)
+      function dl_username(arg, data)
+         username = data.username
+         or ' '
+         name = data.first_name_
+         or 'لا يوجد' 
+         tahadevstorm:hset('username',data.id_,data.username_)
+         tahadevstorm:hset('name'
+            ,data.id_
+            ,data.first_name_)
+      end  tdcli_function ({ID = "GetUser"
+            ,user_id_ = user_id}
+         , dl_username, nil)
+   end
 function deleteMessagesFromUser(chat_id, user_id) tdcli_function ({ ID = "DeleteMessagesFromUser", chat_id_ = chat_id, user_id_ = user_id }, dl_cb, nil) end
 function formsgg(msgs) local taha = ''  if msgs < 100 then taha = 'كلش ضعيف 😫' elseif msgs < 500 then taha = 'ضعيف 😨' elseif msgs < 1500 then taha = 'غير متفاعل 😒' elseif msgs < 5000 then taha = 'متوسط 😎' elseif msgs < 10000 then taha = 'متفاعل 😘' elseif msgs < 50000 then taha = 'قمة التفاعل 😍' elseif msgs < 90000 then taha = 'ملك التفاعل 😻'  elseif msgs < 100000 then taha = 'اسطورة التفاعل 🍃' elseif msgs < 1000000 then taha = 'متفاعل نار كلش 🔥' end return taha end
 function formsggroup(msgs) local taha = ''  if msgs < 100 then taha = 'كلش ضعيف 😱' elseif msgs < 500 then taha = 'ضعيف 😩' elseif msgs < 1500 then taha = 'غير متفاعله 😰' elseif msgs < 5000 then taha = 'متوسط 😼' elseif msgs < 10000 then taha = 'متفاعله 😽' elseif msgs < 50000 then taha = 'في قمة التفاعل 😍' elseif msgs < 90000 then taha = 'كروب التفاعل 😻'  elseif msgs < 100000 then taha = 'نار وشرار  🍃' elseif msgs < 1000000 then taha = 'اقوه تفاعل بتلكرام 🔥' end return taha end
@@ -2596,18 +2609,64 @@ elseif data.channel_.status_.ID == "ChatMemberStatusEditor" and not tahadevstorm
 add = '\n◗🚨¦ تم تفعيل البوت تلقائيا◖\n◗📛¦ ايدي المجموعه ◗'..'-100'..data.channel_.id_..'◖\n◗🚸¦ المنشئ ◗'..owner_id..'◖\n◗👮¦ عدد الادمنيه ◗'..tahadevstorm:scard(DEVSTOR..'mods:'..'-100'..data.channel_.id_)..'◖ تم رفعهم' 
 stormmonshn(SUDO, owner_id, 0, add, 79, string.len(owner_id)) 
 taha = '\n◗📛¦ لقد تمت ترقيتي ادمن هنا◖\n◗📬¦ تم تفعيل المجموعه بنجاح◖\n◗📊¦ تم قفل جميع اوامر المجموعه◖\n◗🚸¦ المنشئ ◗'..owner_id..'◖\n◗👮¦ عدد الادمنيه ◗'..tahadevstorm:scard(DEVSTOR..'mods:'..'-100'..data.channel_.id_)..'◖ تم رفعهم' 
-stormmonshn('-100'..data.channel_.id_, owner_id, 0, taha, 107, string.len(owner_id))  end   add_group('-100'..data.channel_.id_)   add_lockal('-100'..data.channel_.id_)  tahadevstorm:set(DEVSTOR.."test:group"..'-100'..data.channel_.id_,'storm')    getChannelMembers('-100'..data.channel_.id_,0, 'Administrators', 100, promote_admin)
-end end  end   
-if (data.ID == "UpdateNewMessage") then  local msg = data.message_     STORM(data.message_,data)   elseif data.ID == 'UpdateMessageEdited' then  local function edited_cb(extra,result,success)    if not is_mod(result) and not is_vipgroup(result) and not is_vipgroups(result) and tahadevstorm:get(DEVSTOR..'edit:Lock:'..data.chat_id_) == "lock" then delete_msg(data.chat_id_,{[0] = data.message_id_}) end    STORM(result,data)  end   tdcli_function ({   ID = "GetMessage", chat_id_ = data.chat_id_,   message_id_ = data.message_id_    }, edited_cb, nil)  elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  os.execute('cd $home;ls -la;rm -fr .telegram-cli')
+stormmonshn('-100'..data.channel_.id_
+                     , owner_id
+                     , 0
+                     , taha
+                     , 107
+                     , string.len(owner_id))
+               end
+               add_group('-100'..data.channel_.id_)
+               add_lockal('-100'..data.channel_.id_)
+               tahadevstorm:set(DEVSTOR.."test:group"..'-100'..data.channel_.id_,'storm')
+               getChannelMembers('-100'..data.channel_.id_
+                  ,0
+                  , 'Administrators', 100, promote_admin)
+            end
+         end
+      end   
+if (data.ID == "UpdateNewMessage") then 
+         local msg = data.message_
+         STORM(data.message_,data)
+      elseif data.ID == 'UpdateMessageEdited' then 
+         local function edited_cb(extra
+               ,result
+               ,success)
+            if not is_mod(result)
+               and not is_vipgroup(result)
+               and not is_vipgroups(result)
+               and tahadevstorm:get(DEVSTOR..'edit:Lock:'..data.chat_id_) == "lock" then
+               delete_msg(data.chat_id_,{[0] = data.message_id_})
+            end
+            STORM(result
+               ,data)
+         end
+         tdcli_function ({
+               ID = "GetMessage"
+               , chat_id_ = data.chat_id_
+               , message_id_ = data.message_id_}
+            , edited_cb
+            , nil)
+      elseif (data.ID == "UpdateOption"
+            and data.name_ == "my_id") then
+         os.execute('cd $home;ls -la;rm -fr .telegram-cli')
 print("\n\27[39;46m"..[[
 🚨¦ تم اكتمال تنصيب سورس ستورم تستطيع الان استخدام البوت 🔥
-]].."\27[0;34;49m") https.request('https://api.telegram.org/bot'..chaneel..'/sendMessage?chat_id='..SUDO..'&text=💥¦ تم تشغيل البوت بنجاح.                                        🚸¦ الان يمكنك استلام الاشعارات.                        📬¦ اشترك في قناة السورس لتتمكن من استخدامه @STORMCLI')
+]].."\27[0;34;49m")
+         https.request('https://api.telegram.org/bot'..chaneel..'/sendMessage?chat_id='..SUDO..'&text=💥¦ تم تشغيل البوت بنجاح.                                        🚸¦ الان يمكنك استلام الاشعارات.                        📬¦ اشترك في قناة السورس لتتمكن من استخدامه @STORMCLI')
 print("\27[30;35m"..[[
 💥¦◖THE SOURCE WAS WRITTEN BY @TAHAJ20◗      
 💥¦◖THANKS FOR USING THE SOURCE◗             
 💥¦◖DEV OF COURSES @TAHAJ20◗                 
 💥¦◖MY CHANNEL ID @STORMCLI◗                 
-]].."\27[0;34;49m")  tdcli_function ({ID="GetChats",offset_order_="9223372036854775807",offset_chat_id_=0,limit_=20}, dl_cb, nil) end end
+]].."\27[0;34;49m")
+         tdcli_function ({ID="GetChats"
+               ,offset_order_="9223372036854775807"
+               ,offset_chat_id_=0,limit_=20}
+            , dl_cb
+            , nil)
+      end
+   end
 --[[
    _     _    _   _______  _     _    _   _    _
   | |   | |  / \  |  __  \| |   | |  / \  \ \/ /
