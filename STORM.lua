@@ -648,19 +648,181 @@ function get_user(user_id)
             ,user_id_ = user_id}
          , dl_username, nil)
    end
-function deleteMessagesFromUser(chat_id, user_id) tdcli_function ({ ID = "DeleteMessagesFromUser", chat_id_ = chat_id, user_id_ = user_id }, dl_cb, nil) end
-function formsgg(msgs) local taha = ''  if msgs < 100 then taha = 'كلش ضعيف 😫' elseif msgs < 500 then taha = 'ضعيف 😨' elseif msgs < 1500 then taha = 'غير متفاعل 😒' elseif msgs < 5000 then taha = 'متوسط 😎' elseif msgs < 10000 then taha = 'متفاعل 😘' elseif msgs < 50000 then taha = 'قمة التفاعل 😍' elseif msgs < 90000 then taha = 'ملك التفاعل 😻'  elseif msgs < 100000 then taha = 'اسطورة التفاعل 🍃' elseif msgs < 1000000 then taha = 'متفاعل نار كلش 🔥' end return taha end
-function formsggroup(msgs) local taha = ''  if msgs < 100 then taha = 'كلش ضعيف 😱' elseif msgs < 500 then taha = 'ضعيف 😩' elseif msgs < 1500 then taha = 'غير متفاعله 😰' elseif msgs < 5000 then taha = 'متوسط 😼' elseif msgs < 10000 then taha = 'متفاعله 😽' elseif msgs < 50000 then taha = 'في قمة التفاعل 😍' elseif msgs < 90000 then taha = 'كروب التفاعل 😻'  elseif msgs < 100000 then taha = 'نار وشرار  🍃' elseif msgs < 1000000 then taha = 'اقوه تفاعل بتلكرام 🔥' end return taha end
-function title_name(GroupID) tdcli_function({ID ="GetChat",chat_id_=GroupID},function(arg,data) tahadevstorm:set(DEVSTOR..'group:name'..GroupID,data.title_) end,nil) return tahadevstorm:get(DEVSTOR..'group:name'..GroupID) end
-local function rem_lockal(chat_id)  tahadevstorm:del(DEVSTOR..'lock:links'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:links'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:user'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:hash'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:muse'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:ved'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:gif'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:ste'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:geam'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:vico'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:inlin'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:fwd'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:spm'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:file'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:edit'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:mark'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:tagservr'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:phon'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:bots:kick'..chat_id,true)  tahadevstorm:del(DEVSTOR..'lock:self'..chat_id,true)  end
-local function add_lockal(chat_id)   tahadevstorm:set(DEVSTOR..'lock:links'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:links'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:user'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:hash'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:muse'..chat_id,true)  tahadevstorm:set(DEVSTOR..'lock:ved'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:gif'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:ste'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:geam'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:vico'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:inlin'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:fwd'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:spm'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:file'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:edit'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:mark'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:tagservr'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:phon'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:bots:kick'..chat_id,true)   tahadevstorm:set(DEVSTOR..'lock:self'..chat_id,true)   end
-function rem_group(chat_id) tahadevstorm:srem(DEVSTOR..'botgps',chat_id)  tahadevstorm:srem(DEVSTOR..'bot:gpsby:id',chat_id) end
-function add_group(chat_id) tahadevstorm:sadd(DEVSTOR..'botgps',chat_id)  tahadevstorm:sadd(DEVSTOR..'bot:gpsby:id',chat_id)  end
-function get_rtba(msg) if is_devtaha(msg) then t = 'المطور'  elseif is_sudo(msg) then t = 'المطور'  elseif is_owner(msg) then t = 'المنشئ'  elseif is_monsh(msg) then t = 'المدير'  elseif is_mod(msg) then t = 'الادمن'  end  return t end
-function sendaction(chat_id, action, progress) tdcli_function ({ ID = "SendChatAction",  chat_id_ = chat_id, action_ = {  ID = "SendMessage" .. action .. "Action", progress_ = progress or 100} }, dl_cb, nil) end
-local function deleteMessagesFromUser(chat_id, user_id, cb, cmd)  tdcli_function ({ ID = "DeleteMessagesFromUser",  chat_id_ = chat_id, user_id_ = user_id }, cb or dl_cb, cmd) end
-function check_markdown(text)  str = text if str then if str:match('_') then output = str:gsub('_',[[_]]) elseif str:match('*') then output = str:gsub('*','\\*') elseif str:match('`') then output = str:gsub('`','\\`') else output = str end return output end end
-function addChatMember(chat_id, user_id, forward_limit) tdcli_function ({ ID = "AddChatMember", chat_id_ = chat_id, user_id_ = user_id, forward_limit_ = forward_limit }, dl_cb, nil) end
+function deleteMessagesFromUser(chat_id, user_id)
+      tdcli_function ({ ID = "DeleteMessagesFromUser", chat_id_ = chat_id, user_id_ = user_id )
+         , dl_cb
+         , nil) 
+   end
+function formsgg(msgs)
+      local taha = ''
+      if msgs < 100 then
+         taha = 'كلش ضعيف 😫'
+      elseif msgs < 500 then
+         taha = 'ضعيف 😨'
+      elseif msgs < 1500 then
+         taha = 'غير متفاعل 😒'
+      elseif msgs < 5000 then
+         taha = 'متوسط 😎'
+      elseif msgs < 10000 then
+         taha = 'متفاعل 😘'
+      elseif msgs < 50000 then
+         taha = 'قمة التفاعل 😍'
+      elseif msgs < 90000 then
+         taha = 'ملك التفاعل 😻'
+      elseif msgs < 100000 then
+         taha = 'اسطورة التفاعل 🍃'
+      elseif msgs < 1000000 then
+         taha = 'متفاعل نار كلش 🔥'
+      end
+      return
+      taha
+   end
+function formsggroup(msgs)
+      local taha = ''
+      if msgs < 100 then
+         taha = 'كلش ضعيف 😱'
+      elseif msgs < 500 then
+         taha = 'ضعيف 😩'
+      elseif msgs < 1500 then
+         taha = 'غير متفاعله 😰'
+      elseif msgs < 5000 then
+         taha = 'متوسط 😼'
+      elseif msgs < 10000 then
+         taha = 'متفاعله 😽'
+      elseif msgs < 50000 then
+         taha = 'في قمة التفاعل 😍'
+      elseif msgs < 90000 then
+         taha = 'كروب التفاعل 😻'
+      elseif msgs < 100000 then
+         taha = 'نار وشرار  🍃'
+      elseif msgs < 1000000 then
+         taha = 'اقوه تفاعل بتلكرام 🔥'
+      end
+      return
+      taha
+   end
+function title_name(GroupID)
+      tdcli_function({ID ="GetChat",chat_id_=GroupID}
+         ,function(arg,data)
+            tahadevstorm:set(DEVSTOR..'group:name'..GroupID
+               ,data
+               .title_)
+         end
+         ,nil)
+      return 
+      tahadevstorm:get(DEVSTOR..'group:name'..GroupID)
+   end
+local function rem_lockal(chat_id)
+      tahadevstorm:del(DEVSTOR..'lock:links'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:links'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:user'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:hash'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:muse'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:ved'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:gif'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:ste'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:geam'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:vico'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:inlin'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:fwd'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:spm'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:file'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:edit'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:mark'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:tagservr'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:phon'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:bots:kick'..chat_id,true)
+      tahadevstorm:del(DEVSTOR..'lock:self'..chat_id,true)
+   end
+local function add_lockal(chat_id)
+      tahadevstorm:set(DEVSTOR..'lock:links'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:links'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:user'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:hash'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:muse'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:ved'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:gif'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:ste'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:geam'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:vico'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:inlin'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:fwd'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:spm'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:file'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:edit'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:mark'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:tagservr'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:phon'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:bots:kick'..chat_id,true)
+      tahadevstorm:set(DEVSTOR..'lock:self'..chat_id,true)
+   end
+function rem_group(chat_id)
+      tahadevstorm:srem(DEVSTOR..'botgps',chat_id)
+      tahadevstorm:srem(DEVSTOR..'bot:gpsby:id',chat_id)
+   end
+function add_group(chat_id)
+      tahadevstorm:sadd(DEVSTOR..'botgps',chat_id)
+      tahadevstorm:sadd(DEVSTOR..'bot:gpsby:id',chat_id)
+   end
+function get_rtba(msg)
+      if is_devtaha(msg) then
+         t = 'المطور'
+      elseif is_sudo(msg) then
+         t = 'المطور'
+      elseif is_owner(msg) then
+         t = 'المنشئ'
+      elseif is_monsh(msg) then
+         t = 'المدير'
+      elseif is_mod(msg) then
+         t = 'الادمن'
+      end
+      return
+      t
+   end
+function sendaction(chat_id, action, progress)
+      tdcli_function ({ ID = "SendChatAction"
+            ,  chat_id_ = chat_id
+            , action_ = {  ID = "SendMessage" .. action .. "Action"
+               , progress_ = progress
+               or 100} }
+         , dl_cb
+         , nil)
+   end
+local function deleteMessagesFromUser(chat_id
+         , user_id
+         , cb
+         , cmd)
+      tdcli_function ({ ID = "DeleteMessagesFromUser"
+            ,  chat_id_ = chat_id
+            , user_id_ = user_id }
+         , cb or dl_cb
+         , cmd)
+   end
+function check_markdown(text)
+      str = text
+      if str then
+         if str:match('_') then
+            output = str:gsub('_',[[_]])
+         elseif str:match('*') then
+            output = str:gsub('*','\\*')
+         elseif str:match('`') then
+            output = str:gsub('`','\\`') 
+         else output = str
+         end
+         return
+         output
+      end
+   end
+function addChatMember(chat_id
+         , user_id
+         , forward_limit)
+      tdcli_function ({ ID = "AddChatMember"
+            , chat_id_ = chat_id
+            , user_id_ = user_id
+            , forward_limit_ = forward_limit }
+         , dl_cb
+         , nil)
+   end
 function is_filter(msg, value) local hash = tahadevstorm:smembers(DEVSTOR..'filters:'..msg.chat_id_) if hash then local names = tahadevstorm:smembers(DEVSTOR..'filters:'..msg.chat_id_) local text = '' for i=1, #names do if string.match(value:lower(), names[i]:lower()) and not is_mod(msg) and not is_vipgroup(msg) and not is_vipgroups(msg) and not is_monsh(msg) then delete_msg(msg.chat_id_,{[0] = msg.id_} ) end end end end
 function is_muted(chat,user) local hash =  tahadevstorm:sismember(DEVSTOR..'mutes'..chat,user) if hash then return true else return false end end
 function stormmonshn(chat_id, user_id, msg_id, text, offset, length) local tt = tahadevstorm:get(DEVSTOR..'endmsg') or '' tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = msg_id, disable_notification_ = 0, from_background_ = 1, reply_markup_ = nil, input_message_content_ = { ID = "InputMessageText", text_ = text..'\n\n'..tt, disable_web_page_preview_ = 1, clear_draft_ = 0, entities_ = {[0]={ ID="MessageEntityMentionName", offset_=offset, length_=length, user_id_=user_id }, }, }, }, dl_cb, nil) end
