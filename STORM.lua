@@ -8,14 +8,16 @@
 --]]
 --------------------------------------
 redis = require('redis')
-lion = dofile('./JSON.lua')
+JSON = (loadfile  "./libs/dkjson.lua")()
 json = dofile('./JSON.lua')
 URL = require('socket.url')
 HTTPS = require ("ssl.https")
 https = require ("ssl.https")
 http  = require ("socket.http")
+http.TIMEOUT = 10
 serpent = require("serpent")
-tahadevstorm = redis.connect('127.0.0.1', 6379)
+serp = require 'serpent'.block
+database = redis.connect('127.0.0.1', 6379)
 function
    vardump(value)  
  print(serpent.block(value, {comment=false}))
