@@ -823,16 +823,144 @@ function addChatMember(chat_id
          , dl_cb
          , nil)
    end
-function is_filter(msg, value) local hash = tahadevstorm:smembers(DEVSTOR..'filters:'..msg.chat_id_) if hash then local names = tahadevstorm:smembers(DEVSTOR..'filters:'..msg.chat_id_) local text = '' for i=1, #names do if string.match(value:lower(), names[i]:lower()) and not is_mod(msg) and not is_vipgroup(msg) and not is_vipgroups(msg) and not is_monsh(msg) then delete_msg(msg.chat_id_,{[0] = msg.id_} ) end end end end
-function is_muted(chat,user) local hash =  tahadevstorm:sismember(DEVSTOR..'mutes'..chat,user) if hash then return true else return false end end
-function stormmonshn(chat_id, user_id, msg_id, text, offset, length) local tt = tahadevstorm:get(DEVSTOR..'endmsg') or '' tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = msg_id, disable_notification_ = 0, from_background_ = 1, reply_markup_ = nil, input_message_content_ = { ID = "InputMessageText", text_ = text..'\n\n'..tt, disable_web_page_preview_ = 1, clear_draft_ = 0, entities_ = {[0]={ ID="MessageEntityMentionName", offset_=offset, length_=length, user_id_=user_id }, }, }, }, dl_cb, nil) end
-function storm1(chat,user) local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user) local vipss = tahadevstorm:sismember(DEVSTOR..'vip:groups',user) local monh = tahadevstorm:sismember(DEVSTOR..'modergroup'..chat,user) local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user) local nomo = tahadevstorm:sismember(DEVSTOR..'mods:'..chat,user) local novip2 = tahadevstorm:sismember(DEVSTOR..'vip:group'..chat,user) if tonumber(SUDO) == tonumber(user) or sudoe or vipss or monh  or noow or nomo  or novip2 then return true else return false end end 
-function storm2(chat,user)  local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user)  local vipss = tahadevstorm:sismember(DEVSTOR..'vip:groups',user)  local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user)  if tonumber(SUDO) == tonumber(user) or sudoe or vipss or noow  then  return true else  return false end end 
-function storm3(chat,user) local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user) local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user) local monh = tahadevstorm:sismember(DEVSTOR..'modergroup'..chat,user) if tonumber(SUDO) == tonumber(user) or sudoe or monh  or noow then return true else return false end end 
-function storm4(chat,user)     local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user)     local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user)     local monh = tahadevstorm:sismember(DEVSTOR..'modergroup'..chat,user)     local memr = tahadevstorm:sismember(DEVSTOR..'mepar',user)    if tonumber(SUDO) == tonumber(user) or sudoe or monh or memr or noow then     return true     else     return false     end     end 
-function getInputFile(file) local input = tostring(file) if file:match('/') then infile = {ID = "InputFileLocal", path_ = file} elseif file:match('^%d+$') then infile = {ID = "InputFileId", id_ = file} else infile = {ID = "InputFilePersistentId", persistent_id_ = file} end return infile end
-function send_inlinestorm(chat_id,text,keyboard,inline,reply_id) local url = 'https://api.telegram.org/bot'..chaneel if keyboard then stormtoken = url .. '/sendMessage?chat_id=' ..chat_id.. '&text='..URL.escape(text)..'&parse_mode=html&reply_markup='..URL.escape(json:encode(keyboard)) else stormtoken = url .. '/sendMessage?chat_id=' ..chat_id.. '&text=' ..URL.escape(text)..'&parse_mode=html' end https.request(stormtoken) end
-local function getUserProfilePhotos(user_id, offset, limit, cb, cmd)  tdcli_function ({  ID = "GetUserProfilePhotos",   user_id_ = user_id,  offset_ = offset,  limit_ = limit  }, cb or dl_cb, cmd) end
+function is_filter(msg, value)
+      local hash = tahadevstorm:smembers(DEVSTOR..'filters:'..msg.chat_id_)
+      if hash then
+         local names = tahadevstorm:smembers(DEVSTOR..'filters:'..msg.chat_id_)
+         local text = '' for i=1, #names
+         do if string.match(value:lower()
+                  , names[i]:lower())
+               and not is_mod(msg)
+               and not is_vipgroup(msg)
+               and not is_vipgroups(msg)
+               and not is_monsh(msg) then
+               delete_msg(msg.chat_id_
+                  ,{[0] = msg.id_} )
+            end
+         end
+      end
+   end
+function is_muted(chat,user)
+      local hash =  tahadevstorm:sismember(DEVSTOR..'mutes'..chat,user)
+      if hash then
+         return true
+      else return false
+      end
+   end
+function stormmonshn(chat_id
+         , user_id
+         , msg_id
+         , text
+         , offset
+         , length)
+      local tt = tahadevstorm:get(DEVSTOR..'endmsg')
+      or '' tdcli_function ({ ID = "SendMessage"
+            , chat_id_ = chat_id
+            , reply_to_message_id_ = msg_id
+            , disable_notification_ = 0
+            , from_background_ = 1
+            , reply_markup_ = nil
+            , input_message_content_ = { ID = "InputMessageText"
+               , text_ = text..'\n\n'..tt
+               , disable_web_page_preview_ = 1
+               , clear_draft_ = 0
+               , entities_ = {[0]={ ID="MessageEntityMentionName"
+                     , offset_=offset
+                     , length_=length
+                     , user_id_=user_id }
+                  , }
+               , }
+            , }
+         , dl_cb
+         , nil)
+   end
+function storm1(chat,user)
+      local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user)
+      local vipss = tahadevstorm:sismember(DEVSTOR..'vip:groups',user)
+      local monh = tahadevstorm:sismember(DEVSTOR..'modergroup'..chat,user)
+      local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user)
+      local nomo = tahadevstorm:sismember(DEVSTOR..'mods:'..chat,user)
+      local novip2 = tahadevstorm:sismember(DEVSTOR..'vip:group'..chat,user)
+      if tonumber(SUDO) == tonumber(user)
+         or sudoe
+         or vipss
+         or monh
+         or noow
+         or nomo
+         or novip2 then
+         return true
+      else return false
+      end
+   end 
+function storm2(chat,user)
+      local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user)
+      local vipss = tahadevstorm:sismember(DEVSTOR..'vip:groups',user)
+      local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user)
+      if tonumber(SUDO) == tonumber(user)
+         or sudoe
+         or vipss
+         or noow  then
+         return true
+      else  return false
+      end
+   end 
+function storm3(chat,user)
+      local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user)
+      local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user)
+      local monh = tahadevstorm:sismember(DEVSTOR..'modergroup'..chat,user)
+      if tonumber(SUDO) == tonumber(user)
+         or sudoe
+         or monh 
+         or noow then return true
+      else return false
+      end
+   end 
+function storm4(chat,user)
+      local sudoe = tahadevstorm:sismember(DEVSTOR..'sudo:bot',user)
+      local noow = tahadevstorm:sismember(DEVSTOR..'moder'..chat,user)
+      local monh = tahadevstorm:sismember(DEVSTOR..'modergroup'..chat,user)
+      local memr = tahadevstorm:sismember(DEVSTOR..'mepar',user)
+      if tonumber(SUDO) == tonumber(user)
+         or sudoe
+         or monh
+         or memr
+         or noow then
+         return true
+      else
+         return false
+      end
+   end 
+function getInputFile(file)
+      local input = tostring(file)
+      if file:match('/') then
+         infile = {ID = "InputFileLocal"
+            , path_ = file}
+      elseif file:match('^%d+$') then
+         infile = {ID = "InputFileId"
+            , id_ = file}
+      else infile = {ID = "InputFilePersistentId"
+            , persistent_id_ = file}
+      end return infile
+   end
+function send_inlinestorm(chat_id,text,keyboard,inline,reply_id)
+      local url = 'https://api.telegram.org/bot'..chaneel
+      if keyboard then stormtoken = url .. '/sendMessage?chat_id=' ..chat_id.. '&text='..URL.escape(text)..'&parse_mode=html&reply_markup='..URL.escape(json:encode(keyboard))
+      else stormtoken = url .. '/sendMessage?chat_id=' ..chat_id.. '&text=' ..URL.escape(text)..'&parse_mode=html'
+      end https.request(stormtoken)
+   end
+local function getUserProfilePhotos(user_id
+         , offset
+         , limit
+         , cb
+         , cmd)
+      tdcli_function ({  ID = "GetUserProfilePhotos"
+            , user_id_ = user_id
+            , offset_ = offset
+            , limit_ = limit}
+         , cb
+         or dl_cb
+         , cmd)
+   end
 local function deleteMessages(chat_id, message_ids, cb, cmd)   tdcli_function ({  ID = "DeleteMessages",  chat_id_ = chat_id,  message_ids_ = message_ids  }, cb or dl_cb, cmd) end
 local function forwardMessages(chat_id, from_chat_id, message_ids, disable_notification, cb, cmd)  tdcli_function ({    ID = "ForwardMessages",    chat_id_ = chat_id,    from_chat_id_ = from_chat_id,    message_ids_ = message_ids,    disable_notification_ = disable_notification,    from_background_ = 1 }, cb or dl_cb, cmd) end
 function getUser(user_id, cb) tdcli_function ({   ID = "GetUser",  user_id_ = user_id }, cb, nil) end
