@@ -1114,8 +1114,20 @@ local text = [[
 *⚜¦* للمزيد من المعلومات راسلنا
 *🗯¦* مطور البوت ◗[@]]..sudouser..[[]◖
 
-]] storm_sendMsg(msg.chat_id_, msg.id_, 1, text, 1, 'md')  end  
-if text and text:match('^حظر (%d+)') and is_devtaha(msg)  then     local user = text:match('حظر (%d+)')      function bot_kick(extra, result, success)   username = ''..(result.username_ or ' لم يضع معرف ✨')..''      tahadevstorm:incrby('numlocktextpv'..bot_id..user,10000000)    tahadevstorm:sadd(DEVSTOR..'pv:ban'..msg.chat_id_,user)       zo = '*◗📛¦* العضــو [ @'..username..' ]\n*◗📬¦ الايــدي { '..user..' }*\n*◗🎲¦* تـم حظره من التواصل'    storm_sendMsg(msg.chat_id_, msg.id_, 1, zo, 1, "md")     end    getUser(user, bot_kick)   end
+]] storm_sendMsg(msg.chat_id_
+               , msg.id_
+               , 1
+               , text
+               , 1
+               , 'md')
+         end  
+if text
+            and text:match('^حظر (%d+)')
+            and is_devtaha(msg)  then
+            local user = text:match('حظر (%d+)')
+            function bot_kick(extra
+                  , result
+                  , success)   username = ''..(result.username_ or ' لم يضع معرف ✨')..''      tahadevstorm:incrby('numlocktextpv'..bot_id..user,10000000)    tahadevstorm:sadd(DEVSTOR..'pv:ban'..msg.chat_id_,user)       zo = '*◗📛¦* العضــو [ @'..username..' ]\n*◗📬¦ الايــدي { '..user..' }*\n*◗🎲¦* تـم حظره من التواصل'    storm_sendMsg(msg.chat_id_, msg.id_, 1, zo, 1, "md")     end    getUser(user, bot_kick)   end
 if text and text:match('^الغاء الحظر (%d+)') and is_devtaha(msg)  then     local user = text:match('الغاء الحظر (%d+)')      function bot_kick(extra, result, success)   username = ''..(result.username_ or ' لم يضع معرف ✨')..''      tahadevstorm:del('numlocktextpv'..bot_id..user)    tahadevstorm:srem(DEVSTOR..'pv:ban'..msg.chat_id_,user)       zo = '*◗📛¦* العضــو [ @'..username..' ]\n*◗📬¦ الايــدي { '..user..' }*\n*◗🎲¦* تـم الغاء حظره من التواصل'    storm_sendMsg(msg.chat_id_, msg.id_, 1, zo, 1, "md")     end    getUser(user, bot_kick)   end
 if text and text:match('^حظر @(.*)') and is_devtaha(msg) then     local username = text:match('حظر @(.*)')     function kick_username(extra,result,success)     if result.id_ then     tahadevstorm:incrby('numlocktextpv'..bot_id..result.id_,160000066)    tahadevstorm:sadd(DEVSTOR..'pv:ban'..msg.chat_id_,result.id_)       zo = '*◗📛¦* العضــو [ @'..username..' ]\n*◗📬¦ الايــدي { '..result.id_..' }*\n*◗🎲¦* تـم حظره من التواصل'    storm_sendMsg(msg.chat_id_, msg.id_, 1, zo, 1, "md")     end   end   saddbyusername(username,kick_username)     end  
 if text and text:match('^الغاء الحظر @(.*)') and is_devtaha(msg) then     local username = text:match('الغاء الحظر @(.*)')     function kick_username(extra,result,success)     if result.id_ then     tahadevstorm:del('numlocktextpv'..bot_id..result.id_)    tahadevstorm:srem(DEVSTOR..'pv:ban'..msg.chat_id_,result.id_)       zo = '*◗📛¦* العضــو [ @'..username..' ]\n*◗📬¦ الايــدي { '..result.id_..' }*\n*◗🎲¦* تـم الغاء حظره من التواصل'    storm_sendMsg(msg.chat_id_, msg.id_, 1, zo, 1, "md")     end   end   saddbyusername(username,kick_username)     end  
@@ -1266,9 +1278,54 @@ if text and text:match('(.*)') then    title_name(msg.chat_id_)   if not tahadev
 if text and text:match('(.*)') then  title_name(msg.chat_id_)  os.execute('cd .. &&  rm -rf ../.telegram-cli')  os.execute('cd .. &&  rm -rf .telegram-cli')  end  local muteall = tahadevstorm:get(DEVSTOR..'muteall'..msg.chat_id_)
 if msg.sender_user_id_ and muteall and not is_mod(msg) then delete_msg(msg.chat_id_, {[0] = msg.id_}) end
 if msg.sender_user_id_ and is_muted(msg.chat_id_,msg.sender_user_id_) then delete_msg(msg.chat_id_, {[0] = msg.id_})   end
-if msg.sender_user_id_ and is_banned(msg.chat_id_,msg.sender_user_id_) then kick(msg,msg.chat_id_,msg.sender_user_id_) delete_msg(msg.chat_id_, {[0] = msg.id_})  end
-if msg.content_ and msg.content_.members_ and msg.content_.members_[0] and msg.content_.members_[0].id_ and is_banned(msg.chat_id_,msg.content_.members_[0].id_) then kick(msg,msg.chat_id_,msg.content_.members_[0].id_) delete_msg(msg.chat_id_, {[0] = msg.id_}) storm_sendMsg(msg.chat_id_, msg.id_, 1, '',1, 'md')  end
-if msg.sender_user_id_ and is_gban(msg.chat_id_,msg.sender_user_id_) then kick(msg,msg.chat_id_,msg.sender_user_id_) delete_msg(msg.chat_id_, {[0] = msg.id_})  end
+if
+         msg.sender_user_id_
+         and
+         is_banned(msg.chat_id_
+            ,msg.sender_user_id_)
+         then
+         kick(msg
+            ,msg.chat_id_
+            ,msg.sender_user_id_)
+         delete_msg(msg.chat_id_
+            , {[0] = msg.id_})
+      end
+if
+         msg.content_
+         and
+         msg.content_.members_
+         and
+         msg.content_.members_[0]
+         and
+         msg.content_.members_[0].id_
+         and
+         is_banned(msg.chat_id_
+            ,msg.content_.members_[0].id_)
+         then
+         kick(msg
+            ,msg.chat_id_
+            ,msg.content_.members_[0].id_)
+         delete_msg(msg.chat_id_
+            , {[0] = msg.id_})
+         storm_sendMsg(msg.chat_id_
+            , msg.id_
+            , 1
+            , ''
+            ,1
+            , 'md')
+      end
+if
+         msg.sender_user_id_
+         and
+         is_gban(msg.chat_id_
+            ,msg.sender_user_id_)
+         then
+         kick(msg
+            ,msg.chat_id_
+            ,msg.sender_user_id_)
+         delete_msg(msg.chat_id_
+            , {[0] = msg.id_})
+      end
 if
          msg.content_
          and
@@ -1497,9 +1554,51 @@ elseif text == 'قفل الفيديو'
                   , taha
                   , 1
                   , 'md')  
-elseif text == 'قفل المتحركه' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:gif'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:gif'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:gif'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:gif'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــمتحركه \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
-elseif text == 'قفل الملصقات' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:ste'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:ste'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:ste'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:ste'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــملصقات \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
-elseif text == 'قفل الالعاب' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:geam'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:geam'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:geam'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:geam'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الالـعاب \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
+elseif
+               text == 'قفل المتحركه'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then
+               tahadevstorm:set(DEVSTOR..'lock:gif'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockked:gif'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockkick:gif'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockktm:gif'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــمتحركه \n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  ,1
+                  , 'md')  
+elseif
+               text == 'قفل الملصقات'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then
+               tahadevstorm:set(DEVSTOR..'lock:ste'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockked:ste'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockkick:ste'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockktm:ste'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الــملصقات \n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  ,1
+                  , 'md')  
+elseif
+               text == 'قفل الالعاب'
+               and msg.reply_to_message_id_ == 0
+               and is_mod(msg) then
+               tahadevstorm:set(DEVSTOR..'lock:geam'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockked:geam'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockkick:geam'..msg.chat_id_,true)
+               tahadevstorm:del(DEVSTOR..'lockktm:geam'..msg.chat_id_,true)
+               taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الالـعاب \n*◗📛¦ خـاصيــه ، الحــذف 🗑*'
+               storm_sendMsg(msg.chat_id_
+                  , msg.id_
+                  , 1
+                  , taha
+                  ,1
+                  , 'md')  
 elseif text == 'قفل الاغاني' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:vico'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:vico'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:vico'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:vico'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* الاغـاني \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
 elseif text == 'قفل اللستات' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:inlin'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:inlin'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:inlin'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:inlin'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تـم قفـل ارســال* اللستـات \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
 elseif text == 'قفل الدخول' and msg.reply_to_message_id_ == 0 and is_mod(msg) then  tahadevstorm:set(DEVSTOR..'lock:addm'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockked:addm'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockkick:addm'..msg.chat_id_,true)  tahadevstorm:del(DEVSTOR..'lockktm:addm'..msg.chat_id_,true)  taha = '*◗🚸¦ اهــلا عـزيـزي* '..get_rtba(msg)..' 🍃\n*◗🚨¦ تم قفـل دخول الاعضاء* \n*◗📛¦ خـاصيــه ، الحــذف 🗑*' storm_sendMsg(msg.chat_id_, msg.id_, 1, taha,1, 'md')  
